@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}Go :: Home{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+	<div class="container">
+		<h2>Go/ for MODnet</h2>
+		<p>Search for a keyword, register a new keyword, and view popular links. Search within your address bar with <a href="keyword" target="_blank">go/keyword</a>.</p>
+	<form method="get" action="/">
+		<div class="row">
+	  		<div class="col-lg-6 col-lg-offset-3">
+	    		<div class="input-group input-group-lg">
+			      	<span class="input-group-btn">
+			        	<button class="btn btn-default" type="button">Go/</button>
+			      	</span>
+	      			<input type="text" class="form-control" name="key">
+		    	</div><!-- /input-group -->
+		    </div><!-- /.col-lg-6 -->
+		</div>
+	</form>
+  </div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-3">
+			<h3>All Items</h3>
+			<table class="table">
+				{% for key, url in urls %}
+					<tr><td><a href="/{{ key }}" target="_blank">{{ key }}</a></td><td>{{ url }}</td></tr>
+				{% endfor %}
+			</table>
+		</div>
+
+		<div class="col-md-3">
+			<h3>Most Recent</h3>
+			<table class="table">
+				{% for key in recents %}
+					<tr><td>{{ key }}</td></tr>
+				{% endfor %}			
+			</table>
+		</div>
+
+		<div class="col-md-3">
+			<h3>Top Hits</h3>
+			<table class="table">
+				{% for key, count in hits %}
+					<tr><td><a href="/{{ key }}" target="_blank">{{ key }}</a></td><td>{{ count }}</td></tr>
+				{% endfor %}			
+			</table>
+		</div>
+
+		<div class="col-md-3">
+			<h3>Top Misses</h3>
+			<table class="table">
+				{% for key, count in misses %}
+					<tr><td><a href="/create/?key={{ key }}" target="_blank">{{ key }}</a></td><td>{{ count }}</td></tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+
+	<hr>
+
+	<footer>
+		<p>&copy; 2021 Ministry of Defence</p>
+	</footer>
+
+</div>
+{% endblock %}
+
+

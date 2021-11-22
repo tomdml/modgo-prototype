@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Go :: Create{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top: 30px">
+
+	<div class="row">
+
+		<div class="col-lg-4 col-lg-offset-4">
+
+			{% with messages = get_flashed_messages(with_categories=true) %}
+		    {% for category, message in messages %}
+		    <div class="alert alert-{{ category }} alert-dismissible">
+  				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  				{{ message }}
+			</div>
+			{% endfor %}
+			{% endwith %}
+
+			<h3>Create new go/link</h3>
+
+			<form method="post" action="/create/" name="create">
+
+				<div class="input-group">
+		  			<span class="input-group-addon">go/</span>
+		  			<input type="text" class="form-control" name="key" value="{{ key }}" placeholder="keyword" required>
+				</div>
+
+				<input type="text" class="form-control" name="url" placeholder="URL" required>
+
+				<div class="checkbox">
+					<label>
+		    			<input type="checkbox" value="overwrite" name="overwrite">
+		    			Overwrite Existing
+		    		</label>
+				</div>
+
+
+				<button type='submit' class="btn btn-default">Submit</button>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+
