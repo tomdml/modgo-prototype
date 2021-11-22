@@ -1,0 +1,5 @@
+Flask==1.1.2
+Flask-Bootstrap==3.3.7.1
+PyMongo==3.11.4
+flask-pymongo==2.3.0
+pyOpenSSL==20.0.1
